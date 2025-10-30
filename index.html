@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <script>
+        // ⚙️ CONFIG: Change this video ID to redirect to a different YouTube video
+        const YOUTUBE_VIDEO_ID = 'YOUR_VIDEO_ID_HERE';
+        const YOUTUBE_URL = 'https://youtu.be/' + YOUTUBE_VIDEO_ID;
+        
+        // Update meta refresh dynamically (allows easy URL changes)
+        window.addEventListener('DOMContentLoaded', function() {
+            // Remove existing meta refresh if any
+            const existing = document.querySelector('meta[http-equiv="refresh"]');
+            if (existing) existing.remove();
+            
+            // Add new meta refresh with current URL
+            const metaRefresh = document.createElement('meta');
+            metaRefresh.setAttribute('http-equiv', 'refresh');
+            metaRefresh.setAttribute('content', '0; url=' + YOUTUBE_URL);
+            document.getElementsByTagName('head')[0].appendChild(metaRefresh);
+        });
+    </script>
+    <!-- Fallback meta refresh for browsers without JS (optional: update manually if you need no-JS support) -->
+    <noscript>
+        <meta http-equiv="refresh" content="0; url=https://youtu.be/YOUR_VIDEO_ID_HERE">
+    </noscript>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .container {
+            text-align: center;
+        }
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        a {
+            color: white;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="spinner"></div>
+        <p>Redirecting to video...</p>
+        <p style="font-size: 0.9em; opacity: 0.8;">
+            If you're not redirected automatically, <a id="redirect-link" href="#">click here</a>.
+        </p>
+    </div>
+    <script>
+        // Update the fallback link
+        document.addEventListener('DOMContentLoaded', function() {
+            const link = document.getElementById('redirect-link');
+            link.href = YOUTUBE_URL;
+            
+            // Backup JavaScript redirect (in case meta refresh is blocked)
+            setTimeout(function() {
+                window.location.href = YOUTUBE_URL;
+            }, 100);
+        });
+    </script>
+</body>
+</html>
+
