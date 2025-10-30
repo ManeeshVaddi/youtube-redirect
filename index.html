@@ -5,26 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirecting...</title>
     <script>
-        // ⚙️ CONFIG: Replace this URL with your destination URL
-        const REDIRECT_URL = 'https//google.com';
+        // ⚙️ CONFIG: Replace this URL with your destination URL (ONLY UPDATE THIS LINE)
+        const REDIRECT_URL = 'https://www.google.com';
         
-        // Update meta refresh dynamically (allows easy URL changes)
-        window.addEventListener('DOMContentLoaded', function() {
-            // Remove existing meta refresh if any
-            const existing = document.querySelector('meta[http-equiv="refresh"]');
-            if (existing) existing.remove();
-            
-            // Add new meta refresh with current URL
-            const metaRefresh = document.createElement('meta');
-            metaRefresh.setAttribute('http-equiv', 'refresh');
-            metaRefresh.setAttribute('content', '0; url=' + REDIRECT_URL);
-            document.getElementsByTagName('head')[0].appendChild(metaRefresh);
-        });
+        // Immediately set meta refresh tag
+        document.write('<meta http-equiv="refresh" content="0; url=' + REDIRECT_URL + '">');
+        
+        // Immediate redirect (backup method)
+        setTimeout(function() {
+            window.location.href = REDIRECT_URL;
+        }, 50);
     </script>
-    <!-- Fallback meta refresh for browsers without JS (optional: update manually if you need no-JS support) -->
-    <noscript>
-        <meta http-equiv="refresh" content="0; url=https://youtu.be/YOUR_VIDEO_ID_HERE">
-    </noscript>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
