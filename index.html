@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirecting...</title>
     <script>
-        // ⚙️ CONFIG: Change this video ID to redirect to a different YouTube video
-        const YOUTUBE_VIDEO_ID = 'YOUR_VIDEO_ID_HERE';
-        const YOUTUBE_URL = 'https://youtu.be/' + YOUTUBE_VIDEO_ID;
+        // ⚙️ CONFIG: Replace this URL with your destination URL
+        const REDIRECT_URL = 'https://youtu.be/YOUR_VIDEO_ID_HERE';
         
         // Update meta refresh dynamically (allows easy URL changes)
         window.addEventListener('DOMContentLoaded', function() {
@@ -18,7 +17,7 @@
             // Add new meta refresh with current URL
             const metaRefresh = document.createElement('meta');
             metaRefresh.setAttribute('http-equiv', 'refresh');
-            metaRefresh.setAttribute('content', '0; url=' + YOUTUBE_URL);
+            metaRefresh.setAttribute('content', '0; url=' + REDIRECT_URL);
             document.getElementsByTagName('head')[0].appendChild(metaRefresh);
         });
     </script>
@@ -62,7 +61,7 @@
 <body>
     <div class="container">
         <div class="spinner"></div>
-        <p>Redirecting to video...</p>
+        <p>Redirecting...</p>
         <p style="font-size: 0.9em; opacity: 0.8;">
             If you're not redirected automatically, <a id="redirect-link" href="#">click here</a>.
         </p>
@@ -71,11 +70,11 @@
         // Update the fallback link
         document.addEventListener('DOMContentLoaded', function() {
             const link = document.getElementById('redirect-link');
-            link.href = YOUTUBE_URL;
+            link.href = REDIRECT_URL;
             
             // Backup JavaScript redirect (in case meta refresh is blocked)
             setTimeout(function() {
-                window.location.href = YOUTUBE_URL;
+                window.location.href = REDIRECT_URL;
             }, 100);
         });
     </script>

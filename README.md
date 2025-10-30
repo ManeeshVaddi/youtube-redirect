@@ -4,9 +4,9 @@ A simple, permanent redirect to your YouTube video that hides upload timestamps.
 
 ## 🚀 Quick Setup
 
-1. **Replace the video ID** in `index.html`:
-   - Find `YOUR_VIDEO_ID_HERE` (appears 3 times)
-   - Replace with your actual YouTube video ID (e.g., `dQw4w9WgXcQ`)
+1. **Replace the destination URL** in `index.html`:
+   - Find line 9: `const REDIRECT_URL = 'https://youtu.be/YOUR_VIDEO_ID_HERE';`
+   - Replace the entire URL with your destination (e.g., `'https://youtu.be/dQw4w9WgXcQ'` or any other URL)
 
 2. **Upload to GitHub**:
    ```bash
@@ -33,10 +33,10 @@ A simple, permanent redirect to your YouTube video that hides upload timestamps.
 
 Simply edit `index.html` and update **line 9** where it says:
 ```javascript
-const YOUTUBE_VIDEO_ID = 'YOUR_VIDEO_ID_HERE';
+const REDIRECT_URL = 'https://youtu.be/YOUR_VIDEO_ID_HERE';
 ```
 
-Change `YOUR_VIDEO_ID_HERE` to your new video ID. That's it! The rest updates automatically.
+Replace the entire URL with your new destination URL. That's it! The rest updates automatically.
 
 Then commit and push:
 ```bash
@@ -56,8 +56,10 @@ The redirect will update automatically (may take a few seconds).
 
 ## 🎯 Example
 
-If your video ID is `abc123xyz`, your redirect URL will be:
-- GitHub: `https://maneeshvaddi.github.io/pitch/`
+If your YouTube video URL is `https://youtu.be/abc123xyz`, your redirect will be:
+- GitHub: `https://maneeshvaddi.github.io/youtube-redirect/`
 - Redirects to: `https://youtu.be/abc123xyz`
 - No timestamp visible to viewers!
+
+You can redirect to any URL - YouTube videos, websites, or any other link!
 
